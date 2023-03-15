@@ -1,0 +1,1 @@
+// te izpildes instrukcija

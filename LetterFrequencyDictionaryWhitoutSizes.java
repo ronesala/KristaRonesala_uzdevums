@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-// Klase, kas ielasa failu
-public class LetterFrequencyDictionary {
-
+public class LetterFrequencyDictionaryWhitoutSizes {
     // FileNotFound, ja nevar atrast failu
     public static void main(String[] args) throws IOException{
 
@@ -24,7 +22,25 @@ public class LetterFrequencyDictionary {
         // Ielase pa simboliem
         while((charAsAnInteger = reader.read()) != -1)
         {
-            if ( charAsAnInteger > 64 && charAsAnInteger < 91 || charAsAnInteger > 96 && charAsAnInteger < 123){
+            if ( charAsAnInteger > 64 && charAsAnInteger < 91){
+
+                charAsAnInteger = charAsAnInteger + 32;
+
+                // Paarveido no int uz char
+                char character = (char) charAsAnInteger;
+
+                // Ja jau eksistee sarakstaa, tad palielina skaitu
+                if(LetterFrequency.containsKey(character)) {
+                    LetterFrequency.put(character, LetterFrequency.get(character) + 1);
+                }
+
+                // Ja pirmo reizi, tad skaits ir 1
+                else {
+                    LetterFrequency.put(character, 1);
+                }
+
+            }
+            else if (charAsAnInteger > 96 && charAsAnInteger < 123){
 
                 // Paarveido no int uz char
                 char character = (char) charAsAnInteger;
@@ -53,5 +69,4 @@ public class LetterFrequencyDictionary {
         file.close();
 
     }    
-    
 }

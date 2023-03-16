@@ -1,3 +1,5 @@
+// Izveido anglu alfabeeta burtu frekvences vaardniicu nemot veeraa burtu izmeeru
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,10 +12,8 @@ public class LetterFrequencyDictionary {
     // FileNotFound, ja nevar atrast failu
     public static void main(String[] args) throws IOException{
 
-        // Atver failu 
+        // Darbiibas ar failu
         FileReader file = new FileReader("./test2.txt");
-
-        // Ielasa failu
         BufferedReader reader = new BufferedReader(file);
 
         // Map, kur tiks glabaati simboli un to skaits
@@ -50,6 +50,7 @@ public class LetterFrequencyDictionary {
 
         }
 
+        reader.close();
         file.close();
 
     }    

@@ -1,4 +1,4 @@
-// Izveido anglu alfabeeta burtu frekvences vaardniicu 
+// Izveido anglu alfabeeta burtu frekvences vaardniicu nenemot veeraa burtu izmeeru
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -61,6 +61,7 @@ public class LetterFrequencyDictionaryWhitoutSizes {
 
         }
 
+        reader.close();
         file.close();
 
     }    

@@ -75,9 +75,11 @@ public class LetterFrequencyDictionaryWhitoutSizes {
     // FileNotFound, ja nevar atrast failu
     public static void main(String[] args) throws IOException{
 
+        // Darbiibas ar failiem
+        String fileName = "./tests/loremIpsumTest.txt";
         LetterFrequencyDictionaryWhitoutSizes lfdws = new LetterFrequencyDictionaryWhitoutSizes();
         LetterFrequencyDictionary lfd = lfdws.new LetterFrequencyDictionary();
-        HashMap<Character, Integer> LetterFrequency = lfd.countLettersInFile("./tests/test2.txt");
+        HashMap<Character, Integer> LetterFrequency = lfd.countLettersInFile(fileName);
     
         // Izvade
         for (Map.Entry<Character, Integer> entry : LetterFrequency.entrySet()) {
@@ -85,6 +87,72 @@ public class LetterFrequencyDictionaryWhitoutSizes {
             System.out.println(entry.getKey() + " - " + entry.getValue());
     
         }
+
+        // Ieguto rezultatu testesana atkaribaa no ievades faila nosaukuma
+        if (fileName == "./tests/simpleTest.txt"){
+
+            Map<Character, Integer> expectedFrequency = new HashMap<>();
+            expectedFrequency.put('a', 2);
+            expectedFrequency.put('b', 1);
+            expectedFrequency.put('c', 1);
+            
+            boolean result = LetterFrequencyDictionaryWhitoutSizes.testTheAnswer("./tests/simpleTest.txt", expectedFrequency);
+            System.out.println("Test result: " + result);
+        }
+
+        else if (fileName == "./tests/emptyTest.txt"){
+
+            Map<Character, Integer> expectedFrequency = new HashMap<>();
+            
+            boolean result = LetterFrequencyDictionaryWhitoutSizes.testTheAnswer("./tests/emptyTest.txt", expectedFrequency);
+            System.out.println("Test result: " + result);
+
+        }
+
+        else if (fileName == "./tests/loremIpsumTest.txt"){
+
+            Map<Character, Integer> expectedFrequency = new HashMap<>();
+            expectedFrequency.put('a', 471);
+            expectedFrequency.put('b', 64);
+            expectedFrequency.put('c', 221);
+            expectedFrequency.put('d', 175);
+            expectedFrequency.put('e', 661);
+            expectedFrequency.put('f', 55);
+            expectedFrequency.put('g', 78);
+            expectedFrequency.put('h', 32);
+            expectedFrequency.put('i', 604);
+            expectedFrequency.put('j', 8);
+            expectedFrequency.put('l', 336);
+            expectedFrequency.put('m', 266);
+            expectedFrequency.put('n', 333);
+            expectedFrequency.put('o', 262);
+            expectedFrequency.put('p', 145);
+            expectedFrequency.put('q', 82);
+            expectedFrequency.put('r', 308);
+            expectedFrequency.put('s', 498);
+            expectedFrequency.put('t', 473);
+            expectedFrequency.put('u', 482);
+            expectedFrequency.put('v', 105);
+            expectedFrequency.put('w', 2);
+            expectedFrequency.put('x', 11);
+            expectedFrequency.put('y', 1);
+            
+            boolean result = LetterFrequencyDictionaryWhitoutSizes.testTheAnswer("./tests/loremIpsumTest.txt", expectedFrequency);
+            System.out.println("Test result: " + result);
+
+        }
+
+    }
     
-    }  
+    // Testa metode - salidzinam vai sakriit ar ieguuto
+    public static boolean testTheAnswer(String fileName, Map<Character, Integer> expectedFrequency) throws IOException {
+        
+        LetterFrequencyDictionaryWhitoutSizes lfdws = new LetterFrequencyDictionaryWhitoutSizes();
+        LetterFrequencyDictionary lfd = lfdws.new LetterFrequencyDictionary();
+        HashMap<Character, Integer> actualFrequency = lfd.countLettersInFile(fileName);
+
+        return actualFrequency.equals(expectedFrequency);
+    }
+
+
 }

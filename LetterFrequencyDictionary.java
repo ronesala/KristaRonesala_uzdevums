@@ -61,7 +61,7 @@ public class LetterFrequencyDictionary {
     // FileNotFound, ja nevar atrast failu
     public static void main(String[] args) throws IOException{
 
-        String fileName = "./tests/emptyTest.txt";
+        String fileName = "./tests/loremIpsumTest.txt";
         LetterFrequencyDictionary lfd = new LetterFrequencyDictionary();
         HashMap<Character, Integer> LetterFrequency = lfd.countLettersInFile(fileName);
 
